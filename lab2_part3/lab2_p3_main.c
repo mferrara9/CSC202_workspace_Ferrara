@@ -77,7 +77,7 @@ int main(void)
  union_32    union_var;
 
  // Initialize long integer
- union_var.LA = 0x12345678;
+ union_var.LA = 0x1234ABCD;
 
  clock_init_40mhz();
  launchpad_gpio_init();
