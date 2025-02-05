@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "lab2_part3",
+            "type": "ccs-debug",
+            "request": "launch",
+            "project": "lab2_part3"
+        }
+    ]
+}
