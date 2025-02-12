@@ -12,7 +12,6 @@ C_SRCS += \
 ../clock.c \
 ../lab3p1_main_template.c \
 ../lcd1602.c \
-../main.c \
 ../spi.c \
 ../uart.c 
 
@@ -22,7 +21,6 @@ C_DEPS += \
 ./clock.d \
 ./lab3p1_main_template.d \
 ./lcd1602.d \
-./main.d \
 ./spi.d \
 ./uart.d 
 
@@ -32,7 +30,6 @@ OBJS += \
 ./clock.o \
 ./lab3p1_main_template.o \
 ./lcd1602.o \
-./main.o \
 ./spi.o \
 ./uart.o 
 
@@ -42,7 +39,6 @@ OBJS__QUOTED += \
 "clock.o" \
 "lab3p1_main_template.o" \
 "lcd1602.o" \
-"main.o" \
 "spi.o" \
 "uart.o" 
 
@@ -52,7 +48,6 @@ C_DEPS__QUOTED += \
 "clock.d" \
 "lab3p1_main_template.d" \
 "lcd1602.d" \
-"main.d" \
 "spi.d" \
 "uart.d" 
 
@@ -62,7 +57,6 @@ C_SRCS__QUOTED += \
 "../clock.c" \
 "../lab3p1_main_template.c" \
 "../lcd1602.c" \
-"../main.c" \
 "../spi.c" \
 "../uart.c" 
 

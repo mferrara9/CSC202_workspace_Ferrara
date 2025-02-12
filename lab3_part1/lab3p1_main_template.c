@@ -46,6 +46,7 @@
 // Define function prototypes used by the program
 //-----------------------------------------------------------
 void msp_printf(char* buffer, unsigned int value);
+
 // Set Function
 uint16_t set_bit(uint16_t reg_value, uint16_t bit_mask);    
 // Clear Function
@@ -60,8 +61,8 @@ bool check_bit(uint16_t reg_value, uint16_t bit_mask);
 
   #define PIE 0x0001
   #define EME 0x0002
-  #define RD 0x0003
-  #define MD 0x0004
+  #define RD 0x0004
+  #define MD 0x0008
   #define CRS 0x0070
   #define MODE 0x0180
   #define PRS 0x0E00
@@ -164,7 +165,10 @@ int main(void)
 
   reg_value = test_reg16;
 
-  reg_value = set_bit(reg_value, A3);   //**ASK**
+  reg_value = set_bit(reg_value, A0);   //**ASK**
+  reg_value = set_bit(reg_value, A1);
+  reg_value = set_bit(reg_value, A2);
+  reg_value = set_bit(reg_value, A3);
 
   test_reg16 = reg_value;
 
