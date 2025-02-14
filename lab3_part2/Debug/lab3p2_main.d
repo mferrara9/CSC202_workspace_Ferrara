@@ -1,6 +1,6 @@
 # FIXED
 
-lab3p1_main_template.o: ../lab3p1_main_template.c \
+lab3p2_main.o: ../lab3p2_main.c \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/DeviceFamily.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/m0p/mspm0g350x.h \
@@ -31,9 +31,9 @@ lab3p1_main_template.o: ../lab3p1_main_template.c \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h \
- /Users/masonferrara/Desktop/CSC202/lab3_part1/clock.h \
- /Users/masonferrara/Desktop/CSC202/lab3_part1/LaunchPad.h \
- /Users/masonferrara/Desktop/CSC202/lab3_part1/uart.h
+ /Users/masonferrara/Desktop/CSC202/lab3_part2/clock.h \
+ /Users/masonferrara/Desktop/CSC202/lab3_part2/LaunchPad.h \
+ /Users/masonferrara/Desktop/CSC202/lab3_part2/uart.h
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h:
 
@@ -95,8 +95,8 @@ lab3p1_main_template.o: ../lab3p1_main_template.c \
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h:
 
-/Users/masonferrara/Desktop/CSC202/lab3_part1/clock.h:
+/Users/masonferrara/Desktop/CSC202/lab3_part2/clock.h:
 
-/Users/masonferrara/Desktop/CSC202/lab3_part1/LaunchPad.h:
+/Users/masonferrara/Desktop/CSC202/lab3_part2/LaunchPad.h:
 
-/Users/masonferrara/Desktop/CSC202/lab3_part1/uart.h:
+/Users/masonferrara/Desktop/CSC202/lab3_part2/uart.h:

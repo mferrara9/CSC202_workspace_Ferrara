@@ -6,7 +6,7 @@
 //
 //       LAB NAME:  Lab 3, part 1
 //
-//      FILE NAME:  lab3p1_main_template.c
+//      FILE NAME:  lab3p1_main.c
 //
 //-----------------------------------------------------------------------------
 //
@@ -64,7 +64,8 @@ bool check_bit(uint16_t reg_value, uint16_t bit_mask);
   #define RD 0x0004
   #define MD 0x0008
   #define CRS 0x0070
-  #define MODE 0x0180
+  #define MODE_7 0x0080
+  #define MODE_8 0x0100
   #define PRS 0x0E00
   #define A0 0x1000
   #define A1 0x2000
@@ -185,12 +186,18 @@ int main(void)
 
   // enter your code here for problem 5
   
-  reg_value = test_reg16;
+  if (check_bit(reg_value, A2))
+  {
+    msp_printf("Bit A2 is 1\r\n",0);
+  }
+  else
+  {
+    msp_printf("The bit A2 is 0",0);
+  }
 
-  reg_value = check_bit(reg_value, A2);
-
-  test_reg16 = reg_value;
-
+  
+  
+  msp_printf("    --> Test reg = 0x%04X\r\n", test_reg16);
   msp_printf("\r\n",0);
 
 
@@ -240,29 +247,24 @@ int main(void)
   //                modify the reg to set the bit
   // ***************************************************************************
   msp_printf("PROBLEM 8: Testing bit A2\r\n", 0);
+  
 
   // enter your code here for problem 8
 
-  reg_value = test_reg16;
-
-  reg_value = check_bit(reg_value, A2);
-
-  test_reg16 = reg_value;
-
-  //reg_value = test_reg16;
-
-  //if ((reg_value & A2) == A2)
-  //{
-  //msp_printf("Bit A2=1 so clearing it\r\n",0);
-  //reg_value &= ~ A2;
-  // test_reg16 = reg_value;
-  //}
-  //else 
-  //{
-  //msp_printf("Bit A2=0 so setting it\r\n",0);
-  //reg_value |= A2;
-  //test_reg16 = reg_value;
-  //}
+  if (check_bit(reg_value, A2))
+  {
+    msp_printf("Bit A2=1 so clearing it\r\n",0);
+    reg_value = test_reg16;
+    reg_value = clear_bit(reg_value, A2);
+    test_reg16 = reg_value;
+  }
+  else 
+  {
+    msp_printf("Bit A2=0 so setting it\r\n",0);
+    reg_value = test_reg16;
+    reg_value = set_bit(reg_value, A2);
+    test_reg16 = reg_value;
+  }
   
   msp_printf("    --> Test reg = 0x%04X\r\n", test_reg16);
   msp_printf("\r\n",0);
@@ -281,26 +283,22 @@ int main(void)
 
   // enter your code here for problem 9
 
-  reg_value = test_reg16;
-
-  reg_value = check_bit(reg_value, MD);
-
-  test_reg16 = reg_value;
+  if (!check_bit(reg_value, MD))
+  {
+    msp_printf("Bit MD=0, setting mode=10\r\n",0);
+    reg_value = test_reg16;
+    reg_value = set_bit(reg_value, MODE_8);
+    test_reg16 = reg_value;
+  }
+  else 
+  {
+    msp_printf("Bit MD=1 so setting it\r\n",0);
+    reg_value = test_reg16;
+    reg_value = set_bit(reg_value, MODE_7);
+    test_reg16 = reg_value;
+  }
   
-  //reg_value = test_reg16;
-
-  //if ((reg_value & MD) != MD)
-  //{
-  //msp_printf("Bit MD=0, setting mode=10\r\n",0);
-  //reg_value |= MODE;
-  //test_reg16 = reg_value;
-  //}
-  //else 
-  //{
-  //msp_printf("Bit MD=1, setting mode=11\r\n",0);
-  //reg_value |= MODE;
-  //test_reg16 = reg_value;
-  //}
+  
 
 
   msp_printf("    --> Test reg = 0x%04X\r\n", test_reg16);
@@ -371,7 +369,7 @@ int main(void)
 
   uint16_t clear_bit(uint16_t reg_value, uint16_t bit_mask)
   {
-    return (reg_value &= ~bit_mask);
+    return (reg_value &= (~bit_mask));
   }
 
 //-----------------------------------------------------------------------------
@@ -393,17 +391,8 @@ int main(void)
 
   bool check_bit(uint16_t reg_value, uint16_t bit_mask)
   {
-    if ((reg_value & bit_mask) == bit_mask)
-    {
-        
-        msp_printf("Bit A2 is 1\r\n",0);
-    }
-    else 
-    {
-        msp_printf("The bit A2 is 0\r\n",0);
-
-    }
-    return 0;
+    return ((reg_value & bit_mask) == bit_mask);
+    
   }
 
 // Description:

@@ -11,7 +11,8 @@ ORDERED_OBJS += \
 "./LaunchPad.o" \
 "./adc.o" \
 "./clock.o" \
-"./lab3p1_main.o" \
+"./lab3_p2.o" \
+"./lab3p2_main.o" \
 "./lcd1602.o" \
 "./spi.o" \
 "./uart.o" \
@@ -127,29 +128,30 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-lab3_part1.out 
+lab3_part2.out 
 
 EXE_OUTPUTS__QUOTED += \
-"lab3_part1.out" 
+"lab3_part2.out" 
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "lab3_part1.out"
+	@$(MAKE) --no-print-directory -Onone "lab3_part2.out"
 
 # Tool invocations
-lab3_part1.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+lab3_part2.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/bin/tiarmclang" -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O0 -D__MSPM0G3507__ -gdwarf-3 -Wl,-m"lab3_part1.map" -Wl,--heap_size=0x800 -Wl,--stack_size=512 -Wl,-i"/Applications/ti/mspm0_sdk_2_03_00_07/source" -Wl,-i"/Users/masonferrara/Desktop/CSC202/lab3_part1" -Wl,-i"/Users/masonferrara/Desktop/CSC202/lab3_part1/Debug/syscfg" -Wl,-i"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="lab3_part1_linkInfo.xml" -Wl,--rom_model -o "lab3_part1.out" $(ORDERED_OBJS)
+	"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/bin/tiarmclang" -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O0 -D__MSPM0G3507__ -gdwarf-3 -Wl,-m"lab3_part2.map" -Wl,--heap_size=0x800 -Wl,--stack_size=512 -Wl,-i"/Applications/ti/mspm0_sdk_2_03_00_07/source" -Wl,-i"/Users/masonferrara/Desktop/CSC202/lab3_part2" -Wl,-i"/Users/masonferrara/Desktop/CSC202/lab3_part2/Debug/syscfg" -Wl,-i"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="lab3_part2_linkInfo.xml" -Wl,--rom_model -o "lab3_part2.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "LaunchPad.o" "adc.o" "clock.o" "lab3p1_main.o" "lcd1602.o" "spi.o" "uart.o" "ticlang/startup_mspm0g3507_ticlang.o" 
-	-$(RM) "LaunchPad.d" "adc.d" "clock.d" "lab3p1_main.d" "lcd1602.d" "spi.d" "uart.d" "ticlang/startup_mspm0g3507_ticlang.d" 
+	-$(RM) "LaunchPad.o" "adc.o" "clock.o" "lab3_p2.o" "lab3p2_main.o" "lcd1602.o" "spi.o" "uart.o" "ticlang/startup_mspm0g3507_ticlang.o" 
+	-$(RM) "LaunchPad.d" "adc.d" "clock.d" "lab3p2_main.d" "lcd1602.d" "spi.d" "uart.d" "ticlang/startup_mspm0g3507_ticlang.d" 
+	-$(RM) "lab3_p2.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
