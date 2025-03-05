@@ -31,7 +31,7 @@ clock.o: ../clock.c \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h \
- /Users/masonferrara/Desktop/CSC202/csc202_workspace/clock.h
+ /Users/masonferrara/Desktop/CSC202/lab5/clock.h
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h:
 
@@ -93,4 +93,4 @@ clock.o: ../clock.c \
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h:
 
-/Users/masonferrara/Desktop/CSC202/csc202_workspace/clock.h:
+/Users/masonferrara/Desktop/CSC202/lab5/clock.h:
