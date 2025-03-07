@@ -10,7 +10,11 @@
 //-----------------------------------------------------------------------------
 //
 // DESCRIPTION:
-//    This program serves as a ...
+//    This program serves as a practice exercise to help students understand how
+//  configure and use the microcontroller's ports as input ports to capture and
+//  respond to external signals. Students will work with switches, push buttons 
+//  and a keypad as input devices. They will configure GPIO peripherals to read
+//  input states and process these inputs into C.
 //
 //*****************************************************************************
 //*****************************************************************************
