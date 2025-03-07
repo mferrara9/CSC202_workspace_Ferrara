@@ -86,6 +86,24 @@ int main(void) {
 //-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------
 
+//----------------------------------------------------------------------------- 
+// Description:
+// This function waits for the push button (PB2) to be pressed and released 
+// When the button is pressed, it will display a hex value (0x03) on a 7-segment 
+// display for a brief moment, then turn off the display when the button is 
+// released. The function repeats this process for 3 iterations, ensuring proper 
+// debouncing and timing.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
+
 void run_lab5_part1() {
   uint32_t index;
   for (index = Index_zero; index < 3; index++) {
@@ -114,6 +132,26 @@ void run_lab5_part1() {
 
 //-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------- 
+// Description:
+// This function performs a state machine-based operation to read two nibbles 
+// (low and high) from a dip switch, combine them into a full byte, and then 
+// display the byte on a 7-segment display. It switches between states to get 
+// the low and high nibbles, constructs the full byte, and then displays it on 
+// one of two 7-segment displays depending on the state of a push button. The 
+// function repeats this process for 3 iterations and includes debouncing 
+// for switches and buttons.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
 
 void run_lab5_part2() {
   typedef enum FSM_STATES_T { GET_LOW, GET_HIGH, DISPLAY } FSM_STATES_T;
@@ -189,6 +227,25 @@ void run_lab5_part2() {
 //-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------
 
+//----------------------------------------------------------------------------- 
+// Description:
+// This function will sequentially turn on and off the LEDs based on key presses.
+// It waits for a key to be pressed, turns on the corresponding LED, waits for 
+// a brief delay, and then moves to the next LED. The sequence will continue 
+// until all 8 LEDs have been processed. The function also handles waiting 
+// for a key release and ensures that no key press is detected before moving 
+// to the next iteration.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
+
 void run_lab5_part3() {
   uint32_t index_k;
   uint32_t keypressed;
@@ -214,6 +271,24 @@ void run_lab5_part3() {
 
 //-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------- 
+// Description:
+// This function will sequence through a set of LEDs based on the number of 
+// keys pressed on a keypad. For each valid key scan, it will turn on all LEDs 
+// briefly, followed by turning them off, and repeat the process for a number of 
+// times corresponding to the key value. The function repeats this process for 
+// 4 iterations and includes delays and key release handling between each sequence.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
 
 void run_lab5_part4() {
   uint32_t index_s;
