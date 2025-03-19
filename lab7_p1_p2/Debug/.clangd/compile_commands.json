@@ -1,0 +1,42 @@
+[
+   {
+      "directory" : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug",
+      "command"   : "clang++ -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2\" -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/include\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c\"",
+      "file"      : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/LaunchPad.c"
+   },
+   {
+      "directory" : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug",
+      "command"   : "clang++ -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2\" -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/include\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c\"",
+      "file"      : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/adc.c"
+   },
+   {
+      "directory" : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug",
+      "command"   : "clang++ -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2\" -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/include\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c\"",
+      "file"      : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/clock.c"
+   },
+   {
+      "directory" : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug",
+      "command"   : "clang++ -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2\" -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/include\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c\"",
+      "file"      : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/lcd1602.c"
+   },
+   {
+      "directory" : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug",
+      "command"   : "clang++ -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2\" -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/include\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c\"",
+      "file"      : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/spi.c"
+   },
+   {
+      "directory" : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug",
+      "command"   : "clang++ -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2\" -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/include\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c\"",
+      "file"      : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/ticlang/startup_mspm0g3507_ticlang.c"
+   },
+   {
+      "directory" : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug",
+      "command"   : "clang++ -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2\" -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/include\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c\"",
+      "file"      : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/uart.c"
+   },
+   {
+      "directory" : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug",
+      "command"   : "clang++ -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2\" -I\"/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/Debug\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_03_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/include\" -isystem\"/Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/include/c\"",
+      "file"      : "/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/lab7_main.c"
+   }
+]

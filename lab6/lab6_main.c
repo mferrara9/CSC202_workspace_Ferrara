@@ -3,7 +3,7 @@
 //*****************************************************************************
 //  DESIGNER NAME:  Mason Ferrara
 //
-//       LAB NAME:  Lab 6
+//       LAB NAME:  Lab 6 ****WATCH REVIEW 6****
 //
 //      FILE NAME:  lab6_main.c
 //
@@ -427,3 +427,4 @@ void run_lab6_part4()
     lcd_clear();
     lcd_write_string("Program Stopped");
 }
+
