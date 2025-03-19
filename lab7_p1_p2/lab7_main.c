@@ -23,7 +23,7 @@
 //-----------------------------------------------------------------------------
 // Loads MSP launchpad board support macros and definitions
 //-----------------------------------------------------------------------------
-#include <cstdint>
+
 #include <stdio.h>
 #include <ti/devices/msp/msp.h>
 #include "clock.h"
@@ -41,8 +41,10 @@
 void SysTick_Handler(void);
 void wait_for_pb_pressed(uint8_t pb_idx);
 void wait_for_pb_released(uint8_t pb_idx);
+void lcd_string_parser(uint32_t start_lcd_addr, uint32_t max_lcd_addr, const char *string);
 
 void run_lab7_part1(void);
+void run_lab7_part2(void);
 
 //-----------------------------------------------------------------------------
 // Define symbolic constants used by the program
@@ -90,9 +92,15 @@ int main(void)
   lcd1602_init();
   dipsw_init();
   lcd_clear();
+
   sys_tick_init(SYST_TICK_PERIOD_COUNT);
  
   run_lab7_part1();
+  wait_for_pb_pressed(PB2_IDX);
+  run_lab7_part2();
+
+  sys_tick_disable();
+  seg7_off();
 
  // Endless loop to prevent program from ending
  while (1);
@@ -134,29 +142,93 @@ void wait_for_pb_released(uint8_t pb_idx){
 
 //-------------------------------------------------------------------------------------
 void run_lab7_part1(){
-    bool done;
+    bool done = false;
     uint32_t lcd_address;
+    
     char message1[] = "Microcontrollers are fun.";
-    for ( lcd_address = 0x4F; lcd_address < 0x40; lcd_address--;)
-    {
+    while (!done) {
+      for ( lcd_address = 0x4F; (lcd_address > 0x40) && !done; lcd_address--)
+      {
+        lcd_clear();
         lcd_set_ddram_addr(lcd_address);
         lcd_write_string(message1);
         msec_delay(Two_Hundred_Millisec_Pause);
-        lcd_clear();
         if (is_pb_down(PB1_IDX))
         {
             done = true;
         }
-        
-    }
-    while (messsage[idx] != '\0') && !done 
-    {
+      }
+      uint32_t idx = 0;
+      while ((message1[idx] != '\0') && !done)
+      {
+        lcd_clear();
         lcd_set_ddram_addr(0x40);
-        lcd_write_string();
+        lcd_write_string(message1 + idx);
         msec_delay(Two_Hundred_Millisec_Pause);
-        is_pb_down(PB1_IDX);
-        idx++
+        if (is_pb_down(PB1_IDX))
+        {
+            done = true;
+        }
+        idx++;
+      }
     }
+    lcd_clear();
+    lcd_write_string("Part 1 Done");
+    msec_delay(One_Sec_Pause);
+    lcd_clear();
+    lcd_set_ddram_addr(0x40);    
+    lcd_write_string("Press PB2");
 }
 
 //-------------------------------------------------------------------------------------
+void lcd_string_parser(uint32_t start_lcd_addr, uint32_t max_lcd_addr, const char *string){
+    uint8_t count = 0;
+    uint8_t offset = 0x1;
+    while ((*string != '\0') && (count <= ((max_lcd_addr) - start_lcd_addr)))
+    {
+        lcd_write_char(*string++);
+        count++;
+    } 
+}
+
+//-------------------------------------------------------------------------------------
+void run_lab7_part2(){
+    lcd_clear();
+    lcd_write_string("Running Part 2");
+    msec_delay(One_Sec_Pause);
+
+    bool done = false;
+    uint32_t lcd_address;
+    char message2[] = "Microcontrollers are fun. I love programming in MSPM0+ assembly code!!!";
+    while (!done) {
+      for ( lcd_address = 0x4F; (lcd_address > 0x40) && !done; lcd_address--)
+      {
+        lcd_clear();
+        lcd_set_ddram_addr(lcd_address);
+        lcd_string_parser(0x40, 0x4F, message2);
+        msec_delay(Two_Hundred_Millisec_Pause);
+        if (is_pb_down(PB1_IDX))
+        {
+            done = true;
+        }
+      }
+      uint32_t idx = 0;
+      while ((message2[idx] != '\0') && !done)
+      {
+        lcd_clear();
+        lcd_set_ddram_addr(0x40);
+        lcd_string_parser(0x40, 0x4F, message2 + idx);
+        msec_delay(Two_Hundred_Millisec_Pause);
+        if (is_pb_down(PB1_IDX))
+        {
+            done = true;
+        }
+        idx++;
+      }
+    }
+    lcd_clear();
+    lcd_write_string("Part 2 Done");
+    msec_delay(One_Sec_Pause);
+    lcd_clear();
+}
+    

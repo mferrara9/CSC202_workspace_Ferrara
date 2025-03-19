@@ -1,6 +1,6 @@
 # FIXED
 
-main.o: ../main.c \
+lab7_main.o: ../lab7_main.c \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/DeviceFamily.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/m0p/mspm0g350x.h \
@@ -31,7 +31,9 @@ main.o: ../main.c \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h \
- /Users/masonferrara/Desktop/CSC202/csc202_workspace/clock.h
+ /Users/masonferrara/Desktop/CSC202/lab7_p1_p2/clock.h \
+ /Users/masonferrara/Desktop/CSC202/lab7_p1_p2/LaunchPad.h \
+ /Users/masonferrara/Desktop/CSC202/lab7_p1_p2/lcd1602.h
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h:
 
@@ -93,4 +95,8 @@ main.o: ../main.c \
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h:
 
-/Users/masonferrara/Desktop/CSC202/csc202_workspace/clock.h:
+/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/clock.h:
+
+/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/LaunchPad.h:
+
+/Users/masonferrara/Desktop/CSC202/lab7_p1_p2/lcd1602.h:

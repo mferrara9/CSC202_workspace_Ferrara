@@ -42,6 +42,12 @@
             "type": "ccs-debug",
             "request": "launch",
             "project": "lab6"
+        },
+        {
+            "name": "lab7_p1_p2",
+            "type": "ccs-debug",
+            "request": "launch",
+            "project": "lab7_p1_p2"
         }
     ]
 }
