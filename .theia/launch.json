@@ -48,6 +48,18 @@
             "type": "ccs-debug",
             "request": "launch",
             "project": "lab7_p1_p2"
+        },
+        {
+            "name": "lab7p3",
+            "type": "ccs-debug",
+            "request": "launch",
+            "project": "lab7p3"
+        },
+        {
+            "name": "lab7p4",
+            "type": "ccs-debug",
+            "request": "launch",
+            "project": "lab7p4"
         }
     ]
 }
