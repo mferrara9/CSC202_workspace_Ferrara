@@ -19,12 +19,9 @@
 // Loads standard C include files
 //-----------------------------------------------------------------------------
 
-
 //-----------------------------------------------------------------------------
 // Loads MSP launchpad board support macros and definitions
 //-----------------------------------------------------------------------------
-
-
 
 #include <stdio.h>
 #include <ti/devices/msp/msp.h>
@@ -34,7 +31,6 @@
 #include "ti/devices/msp/m0p/mspm0g350x.h"
 #include "ti/devices/msp/peripherals/hw_gpio.h"
 #include "ti/devices/msp/peripherals/m0p/hw_cpuss.h"
-
 
 //-----------------------------------------------------------------------------
 // Define function prototypes used by the program
@@ -91,14 +87,30 @@ int main(void)
  while (1);
 
 } /* main */
-//-------------------------------------------------------------------------------------
-void wait_for_pb_pressed(uint8_t pb_idx){
-    while (is_pb_up(pb_idx));
-    msec_delay(TEN_MILLISEC_PAUSE);
-}
 
 
-//-------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------   
+// Description:
+// This function executes Part 4 of Lab 7, implementing a countdown timer that 
+// starts at MAX_COUNT_VALUE and decrements every 0.2 seconds. When the timer 
+// reaches MIN_COUNT_VALUE, it resets to MAX_COUNT_VALUE, updates the LCD display, 
+// and activates the LEDs based on the count value.
+//
+// The user can interact with the countdown using pushbuttons:
+// - If PB2 is pressed, the LCD alternates between displaying "PB2 PRESSED" and 
+//   clearing the message.
+// - If PB1 is pressed, the function exits the loop, clears the display, and 
+//   shows "Program Stopped" on the LCD before ending execution.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
 void run_lab7_part4(){
     bool done = false;
     uint8_t count = MAX_COUNT_VALUE;
@@ -147,7 +159,23 @@ void run_lab7_part4(){
         msec_delay(Two_Hundred_Millisec_Pause);
 }
 
-//-------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------   
+// Description:
+// This function configures the interrupt for pushbutton PB1. The interrupt is 
+// triggered on a rising edge signal from digital input DIO18. Once triggered, 
+// the interrupt flag is cleared, and the interrupt is enabled with a priority 
+// level of 2. The function ensures that the system responds appropriately when 
+// PB1 is pressed.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
 void config_pb1_interrupts()
 {
     GPIOB-> POLARITY31_16 = GPIO_POLARITY31_16_DIO18_RISE;
@@ -160,7 +188,23 @@ void config_pb1_interrupts()
     NVIC_EnableIRQ(GPIOB_INT_IRQn);
 }
 
-//-------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------   
+// Description:
+// This function configures interrupts for pushbutton PB2 using GPIOA. The interrupt 
+// is triggered on a rising edge detected on DIO15. The function clears any 
+// pending interrupt flags for DIO15, enables the interrupt mask for DIO15, and 
+// sets the priority of the interrupt to level 2 in the Nested Vectored Interrupt 
+// Controller (NVIC). Finally, the function enables the interrupt request in the NVIC.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------  
 void config_pb2_interrupts()
 {
     GPIOA-> POLARITY15_0 = GPIO_POLARITY15_0_DIO15_RISE;
@@ -173,7 +217,24 @@ void config_pb2_interrupts()
     NVIC_EnableIRQ(GPIOA_INT_IRQn);
 }
 
-//-------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------   
+// Description:
+// This function serves as the interrupt handler for Group 1 interrupts. It 
+// continuously checks the interrupt status of the CPUSS INT GROUP 1 and processes 
+// the corresponding interrupt sources. If an interrupt is triggered by GPIOB pin 
+// DIO18 (INT1), it sets the global flag g_PB1_pressed to true and clears the 
+// interrupt flag. If an interrupt is triggered by GPIOA pin DIO15 (INT0), it sets 
+// the global flag g_PB2_pressed to true and clears the interrupt flag.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
 void GROUP1_IRQHandler(void)
 {
     uint32_t group_iidx_status;

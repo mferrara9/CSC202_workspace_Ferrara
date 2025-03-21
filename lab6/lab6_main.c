@@ -245,13 +245,12 @@ void run_lab6_part2()
 
 //-----------------------------------------------------------------------------  
 // Description:
-// This function transitions from Lab 6 Part 2 to Part 3 using a push button 
-// (PB2) as a trigger. It first displays the message "Press PB2" on the LCD, 
-// instructing the user to press the button. The function then waits for PB2 
-// to be pressed and released, ensuring proper debounce handling. Once PB2 is 
-// released, it clears the LCD and displays "Running Part 3" for a set duration 
-// before clearing the screen again. This provides visual feedback to indicate 
-// the transition to Part 3.
+// This function creates a simple time countdown that starts at 100 and is 
+// decremented every 0.2 seconds. When the timer count value reaches 0, the timer 
+// automatically restarts at 100. The timer count value is displayed in the center 
+// of the first row. If pushbutton PB1 is pressed, the timer automatically restarts 
+// at 100 If pushbutton PB2 is pressed, the timer automatically stops, and the message 
+// "Part 3 Done" is displayed on line 1 of the LCD.
 //
 // INPUT PARAMETERS:
 //  none

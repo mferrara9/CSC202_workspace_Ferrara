@@ -5,7 +5,7 @@
 //
 //       LAB NAME:  Lab 7 part 3
 //
-//      FILE NAME:  lab7_main.c
+//      FILE NAME:  lab7p3_main.c
 //
 //-----------------------------------------------------------------------------
 //
@@ -39,10 +39,6 @@
 #define SYST_TICK_PERIOD_COUNT (SYST_TICK_PERIOD * MSPM0_CLOCK_FREQUENCY)
 
 void SysTick_Handler(void);
-void wait_for_pb_pressed(uint8_t pb_idx);
-void wait_for_pb_released(uint8_t pb_idx);
-
-
 void run_lab7_part3(void);
 
 
@@ -62,14 +58,10 @@ void run_lab7_part3(void);
 
 #define SYS_TICK_TIMEOUT_PERIOD (0x63FFF)
 
-
-
-
 //-----------------------------------------------------------------------------
 // Define global variables and structures here.
 // NOTE: when possible avoid using global variables
 //-----------------------------------------------------------------------------
-
 
 // Define a structure to hold different data types
 
@@ -90,15 +82,32 @@ int main(void)
  
   run_lab7_part3();
 
-  //sys_tick_disable();
-  //seg7_off();
 
  // Endless loop to prevent program from ending
  while (1);
 
 } /* main */
 
-//-------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------- 
+// Description:
+//  This function serves as the Interrupt Service Routine (ISR) for the SysTick 
+//  timer. It is triggered at regular intervals based on the configured SysTick 
+//  period. The ISR reads the state of a 4-bit DIP switch, counts the number of 
+//  active (ON) switches, and displays the count on the seven-segment display. 
+//
+//  The function iterates through each bit of the DIP switch input, checking if 
+//  it is set. If a switch is active, the count is incremented. The final count 
+//  value is then displayed on the first digit of the seven-segment display.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//----------------------------------------------------------------------------- 
 void SysTick_Handler(void)
 {
     uint32_t mask = 1;
@@ -119,7 +128,26 @@ void SysTick_Handler(void)
     seg7_hex(count, SEG7_DIG0_ENABLE_IDX);
 }
 
-//-------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------   
+// Description:
+// This function implements a simple countdown timer that starts from MAX_COUNT_VALUE 
+// and decrements every 0.2 seconds. When the timer count value reaches MIN_COUNT_VALUE, 
+// it automatically resets to MAX_COUNT_VALUE and continues counting down. The current 
+// timer value is displayed in the center of the first row of the LCD. The display is 
+// cleared after each iteration.
+//
+// The countdown runs continuously in a loop, and the function does not exit on its own.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
+
 void run_lab7_part3()
 {
     bool done = false;
