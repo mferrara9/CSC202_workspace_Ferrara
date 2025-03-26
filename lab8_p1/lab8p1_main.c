@@ -40,8 +40,6 @@
 //-----------------------------------------------------------------------------
 void config_pb1_interrupts(void);
 void OPA0_init(void);
-void wait_for_pb_pressed(uint8_t pb_idx);
-void wait_for_pb_released(uint8_t pb_idx);
 
 void run_lab8_part1(void);
 
@@ -129,45 +127,6 @@ void OPA0_init(void)
 
 } /* OPA0_init */
 
-//----------------------------------------------------------------------------- 
-// Description:
-// This function waits for a user to press the push button specified 
-// by the given index. It includes debounce delays to ensure stable input
-// detection.
-//
-// INPUT PARAMETERS:
-//  pb_idx: The index of the push button to be monitored.
-//
-// OUTPUT PARAMETERS:
-//  none
-//
-// RETURN:
-//  none
-//-----------------------------------------------------------------------------
-void wait_for_pb_pressed(uint8_t pb_idx){
-    while (is_pb_up(pb_idx));
-    msec_delay(TEN_MILLISEC_PAUSE);
-}
-
-//----------------------------------------------------------------------------- 
-// Description:
-// This function waits for a user to release the push button specified 
-// by the given index. It includes debounce delays to ensure stable input
-// detection.
-//
-// INPUT PARAMETERS:
-//  pb_idx: The index of the push button to be monitored.
-//
-// OUTPUT PARAMETERS:
-//  none
-//
-// RETURN:
-//  none
-//-----------------------------------------------------------------------------
-void wait_for_pb_released(uint8_t pb_idx){
-    while (is_pb_down(pb_idx));
-    msec_delay(TEN_MILLISEC_PAUSE);
-}
 
 //-----------------------------------------------------------------------------   
 // Description:
