@@ -151,7 +151,29 @@ void GROUP1_IRQHandler(void) {
   } while (group_iidx_status != 0);
 }
 
-//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------   
+// Description:
+// This function executes Part 2 of Lab 8, reading an analog voltage level from 
+// ADC channel 7 and displaying the value on the LCD. The function also controls 
+// the LEDs based on the voltage level, turning on a number of LEDs proportional 
+// to the ADC reading.
+//
+// The function continuously updates the LCD and LED display until PB1 is pressed:
+// - The voltage level is read from ADC channel 7 and displayed on the LCD.
+// - LEDs are turned on proportionally to the voltage level, with higher voltages
+//   lighting up more LEDs.
+// - If PB1 is pressed, the function exits the loop, clears the LCD, turns off the LEDs, 
+//   and displays "Program Stopped" before ending execution.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------   
 void run_lab8_part2() {
   bool done = false;
   char message2[] = "ADC =";

@@ -28,8 +28,6 @@
 #include "clock.h"
 #include "cmsis_gcc.h"
 #include "lcd1602.h"
-#include "ti/devices/msp/m0p/mspm0g350x.h"
-#include "ti/devices/msp/peripherals/hw_adc12.h"
 #include <stdio.h>
 #include <ti/devices/msp/msp.h>
 
@@ -38,8 +36,6 @@
 //-----------------------------------------------------------------------------
 void config_pb1_interrupts(void);
 void config_pb2_interrupts(void);
-void wait_for_pb_pressed(uint8_t pb_idx);
-void wait_for_pb_released(uint8_t pb_idx);
 
 void run_lab8_part3(void);
 
@@ -92,65 +88,7 @@ int main(void) {
 
 } /* main */
 
-//-----------------------------------------------------------------------------
-// Description:
-// This function waits for a user to press the push button specified
-// by the given index. It includes debounce delays to ensure stable input
-// detection.
-//
-// INPUT PARAMETERS:
-//  pb_idx: The index of the push button to be monitored.
-//
-// OUTPUT PARAMETERS:
-//  none
-//
-// RETURN:
-//  none
-//-----------------------------------------------------------------------------
-void wait_for_pb_pressed(uint8_t pb_idx) {
-  while (is_pb_up(pb_idx))
-    ;
-  msec_delay(TEN_MILLISEC_PAUSE);
-}
 
-//-----------------------------------------------------------------------------
-// Description:
-// This function waits for a user to release the push button specified
-// by the given index. It includes debounce delays to ensure stable input
-// detection.
-//
-// INPUT PARAMETERS:
-//  pb_idx: The index of the push button to be monitored.
-//
-// OUTPUT PARAMETERS:
-//  none
-//
-// RETURN:
-//  none
-//-----------------------------------------------------------------------------
-void wait_for_pb_released(uint8_t pb_idx) {
-  while (is_pb_down(pb_idx))
-    ;
-  msec_delay(TEN_MILLISEC_PAUSE);
-}
-
-//-----------------------------------------------------------------------------
-// Description:
-// This function configures the interrupt for pushbutton PB1. The interrupt is
-// triggered on a rising edge signal from digital input DIO18. Once triggered,
-// the interrupt flag is cleared, and the interrupt is enabled with a priority
-// level of 2. The function ensures that the system responds appropriately when
-// PB1 is pressed.
-//
-// INPUT PARAMETERS:
-//  none
-//
-// OUTPUT PARAMETERS:
-//  none
-//
-// RETURN:
-//  none
-//-----------------------------------------------------------------------------
 void config_pb1_interrupts() {
   GPIOB->POLARITY31_16 = GPIO_POLARITY31_16_DIO18_RISE;
 
@@ -246,6 +184,32 @@ void GROUP1_IRQHandler(void) {
 }
 
 //-----------------------------------------------------------------------------
+// Description:
+// This function executes Part 3 of Lab 8, reading an ADC voltage level and 
+// displaying it on an LCD, while also controlling LEDs based on the ADC value. 
+// Additionally, it calculates and displays the temperature in Fahrenheit when 
+// PB2 is pressed.
+//
+// The function continuously monitors the ADC channel for voltage and updates 
+// the LCD and LEDs accordingly. The user can interact with the system using 
+// pushbuttons:
+// - If PB1 is pressed, the function exits the loop, turns off LEDs, clears 
+//   the LCD, and displays "Program Stopped" before ending execution.
+// - If PB2 is pressed, the function calculates the temperature from a thermistor 
+//   reading, converts it to Fahrenheit, and displays it on the LCD.
+//
+// The function ensures safe ADC reads by disabling interrupts momentarily 
+// during voltage sampling.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
 void run_lab8_part3() {
   bool done = false;
   char message2[] = "ADC =";
@@ -308,4 +272,4 @@ void run_lab8_part3() {
   lcd_set_ddram_addr(LCD_LINE2_ADDR);
   lcd_write_string("Program Stopped");
   msec_delay(Two_Hundred_Millisec_Pause);
-}
+} 

@@ -9,8 +9,25 @@
 //
 //-----------------------------------------------------------------------------
 //
-// DESCRIPTION:
-//    This program serves as a ... 
+// DESCRIPTION:  
+//      This lab introduces students to the fundamentals of Analog-to-Digital 
+// Conversion (ADC) and its role in bridging  he analog world with digital microcontroller
+// systems. Digital computers operate using discrete signals (0s and 1s), while 
+// real-world data—such as temperature, light intensity, and voltage—varies continuously
+// in analog form.  ADCs enable microcontrollers to process and analyze these real-world 
+// signals by converting them into digital values.  
+//
+//      Using the MSPM0G3507 microcontroller and the LaunchPad development board, 
+// students will configure and utilize the integrated ADC to read inputs from various 
+// sensors. These include a photosensor for measuring light intensity,  a temperature 
+// sensor for detecting ambient conditions, and a potentiometer for manual voltage adjustments.  
+//
+//      Through this lab, students will gain hands-on experience in configuring 
+// the ADC, understanding signal sampling  and quantization, and interpreting digital 
+// representations of analog sensor data. By completing this lab, students  will develop 
+// a deeper understanding of how microcontrollers interface with the real world, preparing 
+// them for applications in embedded systems, data acquisition, and sensor-based designs.  
+
 //
 //*****************************************************************************
 //*****************************************************************************
@@ -29,8 +46,6 @@
 #include "clock.h"
 #include "LaunchPad.h"
 #include "lcd1602.h"
-#include "ti/devices/msp/m0p/mspm0g350x.h"
-#include "ti/devices/msp/peripherals/hw_adc12.h"
 #include "adc.h"
 
 
@@ -202,6 +217,31 @@ void GROUP1_IRQHandler(void)
     } while (group_iidx_status != 0);
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// This function executes Part 1 of Lab 8, implementing a light detection system 
+// that continuously monitors the ambient light level using an ADC sensor. 
+// The LCD displays whether the environment is "Light" or "Dark" based on the 
+// measured ADC value, and updates accordingly.
+//
+// The function operates as follows:
+// - It initializes the LCD display and continuously reads the ADC value from 
+//   the light sensor (CHANNEL_7).
+// - If the light level exceeds the LIGHT_THRESHOLD, the LCD displays "Light" 
+//   along with the ADC reading.
+// - If the light level falls below the LIGHT_THRESHOLD, the LCD displays 
+//   "Dark" along with the ADC reading.
+// - The user can terminate the function by pressing PB1, which clears the LCD 
+//   and displays "Program Stopped" before exiting.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
 //-----------------------------------------------------------------------------
 void run_lab8_part1()
 {
