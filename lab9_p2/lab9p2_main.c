@@ -44,6 +44,7 @@ void run_lab9_part2(void);
 //-----------------------------------------------------------------------------
 #define Five_Hundred_Millisec_Pause (0x1F4)
 #define Two_Hundred_Millisec_Pause (0xC8)
+#define Two_Hundred_Fifty_Millisec_Pause (0xFA)
 #define One_Hundred_Millisec_Pause (0x64)
 #define TEN_MILLISEC_PAUSE (0xA)
 #define Five_Millisec_Pause (0x5)
@@ -59,7 +60,7 @@ void run_lab9_part2(void);
 //-----------------------------------------------------------------------------
 bool g_PB1_pressed = false;
 bool g_PB2_pressed = false;
-uint16_t g_temp_raw;
+
 
 // Define a structure to hold different data types
 
@@ -110,7 +111,7 @@ void run_lab9_part2() {
     lcd_write_string(message2);
     msec_delay(Two_Hundred_Millisec_Pause);
 
-    uint32_t index;
+
 
     while (!g_PB1_pressed) {
       uint16_t temp_raw = ADC0_in(CHANNEL_5);
@@ -126,7 +127,9 @@ void run_lab9_part2() {
         lcd_set_ddram_addr(LCD_LINE2_ADDR + 7);
         lcd_write_byte(duty_cycle);
         lcd_write_char(PERCENT_SYMBOOL);
-        msec_delay(Two_Hundred_Millisec_Pause);
+        led_on(LED_BAR_LD1_IDX);
+        led_off(LED_BAR_LD2_IDX);
+        msec_delay(Two_Hundred_Fifty_Millisec_Pause);
         
       }
 
@@ -138,7 +141,9 @@ void run_lab9_part2() {
         lcd_set_ddram_addr(LCD_LINE2_ADDR + 7);
         lcd_write_byte(duty_cycle);
         lcd_write_char(PERCENT_SYMBOOL);
-        msec_delay(Two_Hundred_Millisec_Pause);
+        led_on(LED_BAR_LD1_IDX);
+        led_off(LED_BAR_LD2_IDX);
+        msec_delay(Two_Hundred_Fifty_Millisec_Pause);
         
       }
       

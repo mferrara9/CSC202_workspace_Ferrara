@@ -3,12 +3,14 @@
 //*****************************************************************************
 //  DESIGNER NAME:  Mason Ferrara
 //
-//       LAB NAME:  Lab 9 part 1
+//       LAB NAME:  Lab 9 Part 3
 //
-//      FILE NAME:  lab9p1_main.c
+//      FILE NAME:  lab9p2_main.c
 //
 //-----------------------------------------------------------------------------
 //
+// DESCRIPTION:
+//    This program serves as a ...
 //
 //*****************************************************************************
 //*****************************************************************************
@@ -32,25 +34,28 @@
 //-----------------------------------------------------------------------------
 // Define function prototypes used by the program
 //-----------------------------------------------------------------------------
-
 void config_pb1_interrupts(void);
 void config_pb2_interrupts(void);
 
-void run_lab9_part1(void);
+void run_lab9_part3(void);
 
 //-----------------------------------------------------------------------------
 // Define symbolic constants used by the program
 //-----------------------------------------------------------------------------
 #define Five_Hundred_Millisec_Pause (0x1F4)
 #define Two_Hundred_Millisec_Pause (0xC8)
+#define Two_Hundred_Fifty_Millisec_Pause (0xFA)
 #define One_Hundred_Millisec_Pause (0x64)
 #define TEN_MILLISEC_PAUSE (0xA)
 #define Five_Millisec_Pause (0x5)
 #define One_Sec_Pause (0x3E8)
 #define Two_Sec_Pause (0x7D0)
 #define Three_Sec_Pause (0xBB8)
-#define PERCENT_SYMBOOL (0x25)
-
+#define CHANNEL_5 (0x5)
+#define CHANNEL_7 (0x7)
+#define MIN_COUNT_VALUE (100)
+#define MAX_COUNT_VALUE (500)
+#define MAX_ACD_VALUE (1023)
 //-----------------------------------------------------------------------------
 // Define global variables and structures here.
 // NOTE: when possible avoid using global variables
@@ -58,18 +63,18 @@ void run_lab9_part1(void);
 bool g_PB1_pressed = false;
 bool g_PB2_pressed = false;
 
+
 // Define a structure to hold different data types
 
 int main(void) {
   clock_init_40mhz();
   launchpad_gpio_init();
-  led_init();
-  led_enable();
   I2C_init();
   lcd1602_init();
   dipsw_init();
+  led_init();
+  led_enable();
   lcd_clear();
-  keypad_init();
 
   ADC0_init(ADC12_MEMCTL_VRSEL_INTREF_VSSA);
 
@@ -79,8 +84,7 @@ int main(void) {
 
   config_pb1_interrupts();
   config_pb2_interrupts();
-
-  run_lab9_part1();
+  run_lab9_part3();
 
   NVIC_DisableIRQ(GPIOA_INT_IRQn);
   NVIC_DisableIRQ(GPIOB_INT_IRQn);
@@ -90,106 +94,61 @@ int main(void) {
 
 } /* main */
 
-//-----------------------------------------------------------------------------
-// Description:
-// This function executes Part 4 of Lab 7, implementing a countdown timer that
-// starts at MAX_COUNT_VALUE and decrements every 0.2 seconds. When the timer
-// reaches MIN_COUNT_VALUE, it resets to MAX_COUNT_VALUE, updates the LCD
-// display, and activates the LEDs based on the count value.
-//
-// The user can interact with the countdown using pushbuttons:
-// - If PB2 is pressed, the LCD alternates between displaying "PB2 PRESSED" and
-//   clearing the message.
-// - If PB1 is pressed, the function exits the loop, clears the display, and
-//   shows "Program Stopped" on the LCD before ending execution.
-//
-// INPUT PARAMETERS:
-//  none
-//
-// OUTPUT PARAMETERS:
-//  none
-//
-// RETURN:
-//  none
-//-----------------------------------------------------------------------------
-void run_lab9_part1() {
+void run_lab9_part3() {
   bool done = false;
-
-  typedef enum { 
-    MOTOR_OFF1, 
-    MOTOR_CW, 
-    MOTOR_OFF2, 
-    MOTOR_CCW 
-    } fsm_states_t;
-
-  fsm_states_t state = MOTOR_OFF1;
-  led_off(LED_BAR_LD1_IDX);
-  led_off(LED_BAR_LD2_IDX);
-  lcd_clear();
+  char message2[] = "ADC VALUE =";
+  char message5[] = "SERVO CNT =";
+  uint32_t servo_count;
 
   while (!done) {
-    uint8_t key_pressed = keypad_scan();
-    if (key_pressed != NO_KEY_PRESSED) {
-      uint16_t duty_cycle = (key_pressed * 100) / 15;
-      lcd_set_ddram_addr(LCD_LINE1_ADDR + 3);
-      lcd_write_string("MOTOR SPEED");
-      lcd_set_ddram_addr(LCD_LINE2_ADDR + 4);
-      lcd_write_doublebyte(duty_cycle);
+
+    lcd_set_ddram_addr(LCD_LINE1_ADDR);
+    lcd_write_string(message2);
+    lcd_set_ddram_addr(LCD_LINE2_ADDR);
+    lcd_write_string(message5);
+    msec_delay(Two_Hundred_Millisec_Pause);
+
+
+    while (!g_PB1_pressed) {
+
+      __ASM ("CPSID I");
+      uint16_t adc_pot_value = ADC0_in(CHANNEL_7);
+      __ASM ("CPSIE I");
+
+      adc_pot_value >>= 2;
+
+      servo_count = 
+      ((adc_pot_value * (MAX_COUNT_VALUE - MIN_COUNT_VALUE)) / MAX_ACD_VALUE) + MIN_COUNT_VALUE;
+
+      lcd_set_ddram_addr(LCD_LINE1_ADDR + 9);
+      lcd_write_doublebyte(adc_pot_value);
       lcd_set_ddram_addr(LCD_LINE2_ADDR + 9);
-      lcd_write_char(PERCENT_SYMBOOL);
-      motor0_set_pwm_dc(duty_cycle);
-      wait_no_key_pressed();
-      msec_delay(TEN_MILLISEC_PAUSE);
+      lcd_write_doublebyte(servo_count);
+      motor0_set_pwm_count(servo_count);
+
+      msec_delay(Two_Hundred_Fifty_Millisec_Pause);
     }
-
-    if (g_PB2_pressed) {
-      switch (state) {
-      case MOTOR_OFF1:
-        state = MOTOR_CW;
-        led_on(LED_BAR_LD1_IDX);
-        led_off(LED_BAR_LD2_IDX);
-        break;
-
-      case MOTOR_CW:
-        state = MOTOR_OFF2;
-        led_off(LED_BAR_LD1_IDX);
-        led_off(LED_BAR_LD2_IDX);
-        break;
-
-      case MOTOR_OFF2:
-        state = MOTOR_CCW;
-        led_off(LED_BAR_LD1_IDX);
-        led_on(LED_BAR_LD2_IDX);
-        break;
-
-      case MOTOR_CCW:
-        state = MOTOR_OFF1;
-        led_off(LED_BAR_LD1_IDX);
-        led_off(LED_BAR_LD2_IDX);
-        break;
-      }
-      msec_delay(One_Hundred_Millisec_Pause);
-      g_PB2_pressed = false;
-    }
-
     if (g_PB1_pressed) {
       g_PB1_pressed = false;
       done = true;
     }
+
+    
   }
   lcd_clear();
+  leds_off();
   lcd_set_ddram_addr(LCD_LINE2_ADDR);
   lcd_write_string("Program Stopped");
   msec_delay(Two_Hundred_Millisec_Pause);
 }
-
 //-----------------------------------------------------------------------------
 // Description:
-// This function configures the interrupt for pushbutton PB1. The interrupt is
-// triggered on a rising edge signal from digital input DIO18. Once triggered,
-// the interrupt flag is cleared, and the interrupt is enabled with a priority
-// level of 2. The function ensures that the system responds appropriately
-// when PB1 is pressed.
+// This function configures interrupts for pushbutton PB1 using GPIOB. The
+// interrupt is triggered on a rising edge detected on DIO15. The function
+// clears any pending interrupt flags for DIO18, enables the interrupt mask for
+// DIO15, and sets the priority of the interrupt to level 2 in the Nested
+// Vectored Interrupt Controller (NVIC). Finally, the function enables the
+// interrupt request in the NVIC.
 //
 // INPUT PARAMETERS:
 //  none
@@ -215,8 +174,8 @@ void config_pb1_interrupts() {
 // Description:
 // This function configures interrupts for pushbutton PB2 using GPIOA. The
 // interrupt is triggered on a rising edge detected on DIO15. The function
-// clears any pending interrupt flags for DIO15, enables the interrupt mask
-// for DIO15, and sets the priority of the interrupt to level 2 in the Nested
+// clears any pending interrupt flags for DIO15, enables the interrupt mask for
+// DIO15, and sets the priority of the interrupt to level 2 in the Nested
 // Vectored Interrupt Controller (NVIC). Finally, the function enables the
 // interrupt request in the NVIC.
 //
@@ -245,9 +204,9 @@ void config_pb2_interrupts() {
 // This function serves as the interrupt handler for Group 1 interrupts. It
 // continuously checks the interrupt status of the CPUSS INT GROUP 1 and
 // processes the corresponding interrupt sources. If an interrupt is triggered
-// by GPIOB pin DIO18 (INT1), it sets the global flag g_PB1_pressed to true
-// and clears the interrupt flag. If an interrupt is triggered by GPIOA pin
-// DIO15 (INT0), it sets the global flag g_PB2_pressed to true and clears the
+// by GPIOB pin DIO18 (INT1), it sets the global flag g_PB1_pressed to true and
+// clears the interrupt flag. If an interrupt is triggered by GPIOA pin DIO15
+// (INT0), it sets the global flag g_PB2_pressed to true and clears the
 // interrupt flag.
 //
 // INPUT PARAMETERS:
