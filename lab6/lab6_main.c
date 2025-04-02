@@ -202,7 +202,8 @@ void run_lab6_part2()
     uint8_t pressCount = 0;
 
     while (pressCount < 4) {
-        switch (pressCount) {
+        switch (pressCount) 
+        {
             case 0:
                 lcd_clear();
                 lcd_set_ddram_addr(LCD_LINE1_ADDR + 3); 

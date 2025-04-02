@@ -78,6 +78,7 @@ int main(void)
 
   config_pb1_interrupts();
   config_pb2_interrupts();
+
   run_lab7_part4();
 
 
@@ -111,6 +112,7 @@ int main(void)
 //-----------------------------------------------------------------------------
 void run_lab7_part4(){
     bool done = false;
+
     uint8_t count = MAX_COUNT_VALUE;
     bool display = false;
 

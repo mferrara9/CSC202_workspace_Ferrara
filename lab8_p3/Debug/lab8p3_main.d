@@ -6,6 +6,8 @@ lab8p3_main.o: ../lab8p3_main.c \
  /Users/masonferrara/Desktop/CSC202/lab8_p3/clock.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include/cmsis_gcc.h \
  /Users/masonferrara/Desktop/CSC202/lab8_p3/lcd1602.h \
+ /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h \
+ /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/DeviceFamily.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/m0p/mspm0g350x.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include/core_cm0plus.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/hw_adc12.h \
@@ -33,9 +35,7 @@ lab8p3_main.o: ../lab8p3_main.c \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_cpuss.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
- /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/DeviceFamily.h \
- /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h \
- /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h
+ /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h
 
 /Users/masonferrara/Desktop/CSC202/lab8_p3/LaunchPad.h:
 
@@ -46,6 +46,10 @@ lab8p3_main.o: ../lab8p3_main.c \
 /Applications/ti/mspm0_sdk_2_03_00_07/source/third_party/CMSIS/Core/Include/cmsis_gcc.h:
 
 /Users/masonferrara/Desktop/CSC202/lab8_p3/lcd1602.h:
+
+/Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h:
+
+/Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/DeviceFamily.h:
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/m0p/mspm0g350x.h:
 
@@ -101,8 +105,4 @@ lab8p3_main.o: ../lab8p3_main.c \
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h:
 
-/Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/DeviceFamily.h:
-
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h:
-
-/Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h:
