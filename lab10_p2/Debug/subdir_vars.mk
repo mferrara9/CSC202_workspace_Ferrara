@@ -10,7 +10,7 @@ C_SRCS += \
 ../LaunchPad.c \
 ../adc.c \
 ../clock.c \
-../lab10p1_main.c \
+../lab10p2_main.c \
 ../lcd1602.c \
 ../spi.c \
 ../uart.c 
@@ -19,7 +19,7 @@ C_DEPS += \
 ./LaunchPad.d \
 ./adc.d \
 ./clock.d \
-./lab10p1_main.d \
+./lab10p2_main.d \
 ./lcd1602.d \
 ./spi.d \
 ./uart.d 
@@ -28,7 +28,7 @@ OBJS += \
 ./LaunchPad.o \
 ./adc.o \
 ./clock.o \
-./lab10p1_main.o \
+./lab10p2_main.o \
 ./lcd1602.o \
 ./spi.o \
 ./uart.o 
@@ -37,7 +37,7 @@ OBJS__QUOTED += \
 "LaunchPad.o" \
 "adc.o" \
 "clock.o" \
-"lab10p1_main.o" \
+"lab10p2_main.o" \
 "lcd1602.o" \
 "spi.o" \
 "uart.o" 
@@ -46,7 +46,7 @@ C_DEPS__QUOTED += \
 "LaunchPad.d" \
 "adc.d" \
 "clock.d" \
-"lab10p1_main.d" \
+"lab10p2_main.d" \
 "lcd1602.d" \
 "spi.d" \
 "uart.d" 
@@ -55,7 +55,7 @@ C_SRCS__QUOTED += \
 "../LaunchPad.c" \
 "../adc.c" \
 "../clock.c" \
-"../lab10p1_main.c" \
+"../lab10p2_main.c" \
 "../lcd1602.c" \
 "../spi.c" \
 "../uart.c" 

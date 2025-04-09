@@ -31,8 +31,8 @@ LaunchPad.o: ../LaunchPad.c \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
  /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h \
- /Users/masonferrara/Desktop/CSC202/lab10_p1/LaunchPad.h \
- /Users/masonferrara/Desktop/CSC202/lab10_p1/clock.h
+ /Users/masonferrara/Desktop/CSC202/lab10_p2/LaunchPad.h \
+ /Users/masonferrara/Desktop/CSC202/lab10_p2/clock.h
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/msp.h:
 
@@ -94,6 +94,6 @@ LaunchPad.o: ../LaunchPad.c \
 
 /Applications/ti/mspm0_sdk_2_03_00_07/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h:
 
-/Users/masonferrara/Desktop/CSC202/lab10_p1/LaunchPad.h:
+/Users/masonferrara/Desktop/CSC202/lab10_p2/LaunchPad.h:
 
-/Users/masonferrara/Desktop/CSC202/lab10_p1/clock.h:
+/Users/masonferrara/Desktop/CSC202/lab10_p2/clock.h:

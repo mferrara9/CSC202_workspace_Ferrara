@@ -47,6 +47,7 @@ void run_lab10_part1(void);
 #define Three_Sec_Pause (0xBB8)
 #define MAX_CHAR_SIZE (16)
 #define NULL_CHAR ('\0')
+#define BACKSPACE (0x08)
 //-----------------------------------------------------------------------------
 // Define global variables and structures here.
 // NOTE: when possible avoid using global variables
@@ -97,7 +98,7 @@ void run_lab10_part1() {
       done = true;
       buffer[idx++] = (int8_t)NULL_CHAR;
     }
-    if (character == 0x08) {
+    if (character == BACKSPACE) {
             buffer[idx--] = character;
     }
     else {

@@ -1,7 +1,7 @@
 "./LaunchPad.o"
 "./adc.o"
 "./clock.o"
-"./lab10p1_main.o"
+"./lab10p2_main.o"
 "./lcd1602.o"
 "./spi.o"
 "./uart.o"

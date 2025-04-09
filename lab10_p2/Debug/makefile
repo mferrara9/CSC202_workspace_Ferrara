@@ -11,7 +11,7 @@ ORDERED_OBJS += \
 "./LaunchPad.o" \
 "./adc.o" \
 "./clock.o" \
-"./lab10p1_main.o" \
+"./lab10p2_main.o" \
 "./lcd1602.o" \
 "./spi.o" \
 "./uart.o" \
@@ -148,8 +148,8 @@ lab10_p2.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "LaunchPad.o" "adc.o" "clock.o" "lab10p1_main.o" "lcd1602.o" "spi.o" "uart.o" "ticlang/startup_mspm0g3507_ticlang.o" 
-	-$(RM) "LaunchPad.d" "adc.d" "clock.d" "lab10p1_main.d" "lcd1602.d" "spi.d" "uart.d" "ticlang/startup_mspm0g3507_ticlang.d" 
+	-$(RM) "LaunchPad.o" "adc.o" "clock.o" "lab10p2_main.o" "lcd1602.o" "spi.o" "uart.o" "ticlang/startup_mspm0g3507_ticlang.o" 
+	-$(RM) "LaunchPad.d" "adc.d" "clock.d" "lab10p2_main.d" "lcd1602.d" "spi.d" "uart.d" "ticlang/startup_mspm0g3507_ticlang.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

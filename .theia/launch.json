@@ -102,6 +102,12 @@
             "type": "ccs-debug",
             "request": "launch",
             "project": "lab10_p1"
+        },
+        {
+            "name": "lab10_p2",
+            "type": "ccs-debug",
+            "request": "launch",
+            "project": "lab10_p2"
         }
     ]
 }
