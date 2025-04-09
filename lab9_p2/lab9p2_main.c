@@ -9,9 +9,6 @@
 //
 //-----------------------------------------------------------------------------
 //
-// DESCRIPTION:
-//    This program serves as a ...
-//
 //*****************************************************************************
 //*****************************************************************************
 
@@ -61,7 +58,6 @@ void run_lab9_part2(void);
 bool g_PB1_pressed = false;
 bool g_PB2_pressed = false;
 
-
 // Define a structure to hold different data types
 
 int main(void) {
@@ -92,6 +88,36 @@ int main(void) {
 
 } /* main */
 
+//-----------------------------------------------------------------------------
+// Description:
+// This function executes Part 2 of Lab 9, simulating a temperature-dependent
+// fan speed control system using Pulse Width Modulation (PWM). The system reads
+// temperature data from a thermistor connected to the ADC, converts it to
+// Fahrenheit, and adjusts the PWM duty cycle accordingly to simulate fan speed.
+// Temperature and fan speed are displayed on the LCD in real-time.
+//
+// The function operates in a loop until pushbutton PB1 is pressed. While
+// running, it continuously performs the following:
+// - Reads temperature data from the thermistor via ADC channel 5
+// - Converts the raw ADC value to Celsius and then to Fahrenheit
+// - Determines fan speed (PWM duty cycle) based on the temperature threshold:
+//     - If temperature > 77°F, duty cycle is set to 80%
+//     - If temperature ≤ 77°F, duty cycle is set to 25%
+// - Updates the LCD with the current temperature and fan speed
+// - Controls the LEDs based on system state
+//
+// When PB1 is pressed, the function exits the loop, turns off the LEDs,
+// clears the LCD, and displays "Program Stopped" before ending execution.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
 void run_lab9_part2() {
   bool done = false;
   char message2[] = "SPEED =";
@@ -111,8 +137,6 @@ void run_lab9_part2() {
     lcd_write_string(message2);
     msec_delay(Two_Hundred_Millisec_Pause);
 
-
-
     while (!g_PB1_pressed) {
       uint16_t temp_raw = ADC0_in(CHANNEL_5);
       uint16_t temp_degrees_c = (uint16_t)thermistor_calc_temperature(temp_raw);
@@ -130,7 +154,6 @@ void run_lab9_part2() {
         led_on(LED_BAR_LD1_IDX);
         led_off(LED_BAR_LD2_IDX);
         msec_delay(Two_Hundred_Fifty_Millisec_Pause);
-        
       }
 
       if (temp_degrees_f <= 77) {
@@ -144,16 +167,12 @@ void run_lab9_part2() {
         led_on(LED_BAR_LD1_IDX);
         led_off(LED_BAR_LD2_IDX);
         msec_delay(Two_Hundred_Fifty_Millisec_Pause);
-        
       }
-      
     }
     if (g_PB1_pressed) {
       g_PB1_pressed = false;
       done = true;
     }
-
-    
   }
   lcd_clear();
   leds_off();

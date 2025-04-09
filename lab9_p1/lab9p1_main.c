@@ -9,6 +9,30 @@
 //
 //-----------------------------------------------------------------------------
 //
+// DESCRIPTION:
+//      This lab introduces students to the fundamentals of Pulse Width
+// Modulation (PWM) and its essential role in simulating analog-like control
+// using digital signals. While digital computers operate using discrete high
+// and low signals, many real-world systems require fine-tuned control over
+// power, speed, position, or intensity—capabilities that PWM provides
+// effectively and efficiently.
+//
+//      PWM works by rapidly switching a digital signal on and off, adjusting
+// the ratio of "on" time (high) to the total signal period. This ratio, known
+// as the duty cycle, determines the average power delivered to a device,
+// allowing for analog-like behavior from a digital output.
+//
+//      Using the MSPM0G3507 microcontroller and the LaunchPad development
+// board,students will configure and utilize PWM to control a variety of
+// devices. Lab activities include adjusting the speed of a DC motor, simulating
+// a temperature-dependent cooling fan using ADC data, and precisely positioning
+// a servomotor.
+//
+//      Through these exercises, students will gain hands-on experience in
+// configuring PWM outputs, understanding duty cycle manipulation, and applying
+// PWM in real-time embedded control systems. Completion of this lab will
+// reinforce key embedded systems concepts and demonstrate how digital signals
+// can be used for nuanced control in hardware design.
 //
 //*****************************************************************************
 //*****************************************************************************
@@ -92,16 +116,23 @@ int main(void) {
 
 //-----------------------------------------------------------------------------
 // Description:
-// This function executes Part 4 of Lab 7, implementing a countdown timer that
-// starts at MAX_COUNT_VALUE and decrements every 0.2 seconds. When the timer
-// reaches MIN_COUNT_VALUE, it resets to MAX_COUNT_VALUE, updates the LCD
-// display, and activates the LEDs based on the count value.
+// This function executes Part 1 of Lab 9, which demonstrates motor speed control  
+// using Pulse Width Modulation (PWM) and finite state machine (FSM) logic.  
+// The user can set the motor speed via keypad input and control motor direction  
+// using pushbuttons PB1 and PB2.  
 //
-// The user can interact with the countdown using pushbuttons:
-// - If PB2 is pressed, the LCD alternates between displaying "PB2 PRESSED" and
-//   clearing the message.
-// - If PB1 is pressed, the function exits the loop, clears the display, and
-//   shows "Program Stopped" on the LCD before ending execution.
+// Keypad input allows the user to set a new PWM duty cycle (0–100%), which is  
+// calculated based on the key pressed and applied to the motor. The current duty  
+// cycle is displayed on the LCD as a percentage.
+//
+// Motor direction is controlled through a simple FSM triggered by PB2 presses.  
+// The state transitions follow the pattern:
+//   MOTOR_OFF1 → MOTOR_CW → MOTOR_OFF2 → MOTOR_CCW → MOTOR_OFF1 (cycle repeats)  
+// Corresponding LEDs are used to indicate motor direction:  
+//   - LD1 for clockwise (CW)  
+//   - LD2 for counter-clockwise (CCW)  
+//
+// Pressing PB1 exits the loop, clears the LCD, and displays "Program Stopped".  
 //
 // INPUT PARAMETERS:
 //  none
@@ -112,15 +143,11 @@ int main(void) {
 // RETURN:
 //  none
 //-----------------------------------------------------------------------------
+
 void run_lab9_part1() {
   bool done = false;
 
-  typedef enum { 
-    MOTOR_OFF1, 
-    MOTOR_CW, 
-    MOTOR_OFF2, 
-    MOTOR_CCW 
-    } fsm_states_t;
+  typedef enum { MOTOR_OFF1, MOTOR_CW, MOTOR_OFF2, MOTOR_CCW } fsm_states_t;
 
   fsm_states_t state = MOTOR_OFF1;
   led_off(LED_BAR_LD1_IDX);

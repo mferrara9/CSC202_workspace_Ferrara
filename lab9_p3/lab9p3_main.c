@@ -5,12 +5,9 @@
 //
 //       LAB NAME:  Lab 9 Part 3
 //
-//      FILE NAME:  lab9p2_main.c
+//      FILE NAME:  lab9p3_main.c
 //
 //-----------------------------------------------------------------------------
-//
-// DESCRIPTION:
-//    This program serves as a ...
 //
 //*****************************************************************************
 //*****************************************************************************
@@ -63,7 +60,6 @@ void run_lab9_part3(void);
 bool g_PB1_pressed = false;
 bool g_PB2_pressed = false;
 
-
 // Define a structure to hold different data types
 
 int main(void) {
@@ -94,6 +90,36 @@ int main(void) {
 
 } /* main */
 
+//-----------------------------------------------------------------------------
+// Description:
+// This function executes Part 3 of Lab 9, which demonstrates how analog input
+// from a potentiometer can be used to control a servomotor via Pulse Width
+// Modulation (PWM). The system continuously reads the ADC value from the
+// potentiometer (connected to CHANNEL_7), scales it to an appropriate servo
+// PWM count, and updates both the LCD display and the servo output in real-time.
+//
+// The function displays two lines on the LCD:
+// - Line 1: "ADC VALUE =" followed by the scaled ADC reading.
+// - Line 2: "SERVO CNT =" followed by the corresponding PWM count value.
+//
+// The servo position is updated based on the calculated PWM count, allowing
+// analog-like control over the motor’s position.
+//
+// The loop runs until PB1 is pressed:
+// - During operation, PB1 is polled continuously.
+// - Once PB1 is pressed, the loop exits, the display is cleared, and the
+//   message "Program Stopped" is shown on the LCD.
+// - LEDs are turned off before final delay and exit.
+//
+// INPUT PARAMETERS:
+//  none
+//
+// OUTPUT PARAMETERS:
+//  none
+//
+// RETURN:
+//  none
+//-----------------------------------------------------------------------------
 void run_lab9_part3() {
   bool done = false;
   char message2[] = "ADC VALUE =";
@@ -108,17 +134,17 @@ void run_lab9_part3() {
     lcd_write_string(message5);
     msec_delay(Two_Hundred_Millisec_Pause);
 
-
     while (!g_PB1_pressed) {
 
-      __ASM ("CPSID I");
+      __ASM("CPSID I");
       uint16_t adc_pot_value = ADC0_in(CHANNEL_7);
-      __ASM ("CPSIE I");
+      __ASM("CPSIE I");
 
       adc_pot_value >>= 2;
 
-      servo_count = 
-      ((adc_pot_value * (MAX_COUNT_VALUE - MIN_COUNT_VALUE)) / MAX_ACD_VALUE) + MIN_COUNT_VALUE;
+      servo_count = ((adc_pot_value * (MAX_COUNT_VALUE - MIN_COUNT_VALUE)) /
+                     MAX_ACD_VALUE) +
+                    MIN_COUNT_VALUE;
 
       lcd_set_ddram_addr(LCD_LINE1_ADDR + 9);
       lcd_write_doublebyte(adc_pot_value);
@@ -132,8 +158,6 @@ void run_lab9_part3() {
       g_PB1_pressed = false;
       done = true;
     }
-
-    
   }
   lcd_clear();
   leds_off();
