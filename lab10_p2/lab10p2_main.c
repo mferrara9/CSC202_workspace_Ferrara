@@ -152,6 +152,13 @@ void run_lab10_part2() {
 
 //-----------------------------------------------------------------------------
 // Description:
+// This function performs a simple LED flashing routine by toggling all onboard  
+// LEDs on and off in a loop. The routine flashes the LEDs three times, with each  
+// ON and OFF state lasting 250 milliseconds.
+//
+// The function utilizes `leds_on()` and `leds_off()` to control the LED states,  
+// and `msec_delay()` to provide timing delays between transitions. This is often  
+// used as a visual indication for startup, reset, or user feedback.
 //
 // INPUT PARAMETERS:
 //  none
@@ -178,9 +185,16 @@ void flash_leds()
 
 //-----------------------------------------------------------------------------
 // Description:
+// This function controls a single-digit 7-segment display by incrementing and  
+// displaying a decimal value (0–9) when enabled. The count is maintained using  
+// a static variable to preserve its value across multiple calls.
+//
+// When the `inc_enable` flag is true, the count is incremented by 1. If the count  
+// reaches 10, it wraps around to 0. The updated value is then displayed on  
+// the 7-segment display using `seg7_hex()` on digit index 0.
 //
 // INPUT PARAMETERS:
-//  none
+//  inc_enable – enables counting when set to true
 //
 // OUTPUT PARAMETERS:
 //  none
@@ -202,6 +216,13 @@ void inc_seg7(bool inc_enable)
 
 //-----------------------------------------------------------------------------
 // Description:
+// This function reads the raw analog temperature data from a thermistor connected  
+// to ADC Channel 5, converts the value to degrees Celsius using a lookup or formula  
+// via `thermistor_calc_temperature()`, and then calculates the equivalent temperature  
+// in degrees Fahrenheit.
+//
+// The resulting temperature in Fahrenheit is displayed on the first line of the LCD  
+// in the format: "TEMP = ##°F", where `##` represents the calculated temperature.
 //
 // INPUT PARAMETERS:
 //  none
@@ -212,6 +233,7 @@ void inc_seg7(bool inc_enable)
 // RETURN:
 //  none
 //-----------------------------------------------------------------------------
+
 void display_temp() 
 {
     uint16_t temp_raw = ADC0_in(CHANNEL_5);
@@ -228,9 +250,15 @@ void display_temp()
 
 //-----------------------------------------------------------------------------
 // Description:
+// This function sends a null-terminated string over the UART interface one character  
+// at a time using `UART_out_char()`. It continues transmitting until the null character  
+// (`'\0'`) is encountered, signaling the end of the string.
+//
+// This utility function is commonly used for displaying messages on a serial terminal  
+// during debugging or user interaction in embedded systems.
 //
 // INPUT PARAMETERS:
-//  none
+//  str – pointer to the null-terminated string to be transmitted
 //
 // OUTPUT PARAMETERS:
 //  none
