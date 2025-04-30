@@ -1,0 +1,499 @@
+******************************************************************************
+            TI ARM Clang Linker Unix v3.2.1                    
+******************************************************************************
+>> Linked Thu Apr 24 09:24:17 2025
+
+OUTPUT FILE NAME:   <lab11.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00001299
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00020000  000016a0  0001e960  R  X
+  SRAM                  20200000   00008000  00000a05  000075fb  RW X
+  BCR_CONFIG            41c00000   00000080  00000000  00000080  R   
+  BSL_CONFIG            41c00100   00000080  00000000  00000080  R   
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000016a0   000016a0    r-x
+  00000000    00000000    000000c0   000000c0    r-- .intvecs
+  000000c0    000000c0    00001370   00001370    r-x .text
+  00001430    00001430    00000250   00000250    r-- .rodata
+  00001680    00001680    00000020   00000020    r-- .cinit
+20200000    20200000    00000805   00000000    rw-
+  20200000    20200000    00000800   00000000    rw- .sysmem
+  20200800    20200800    00000005   00000000    rw- .data
+20207e00    20207e00    00000200   00000000    rw-
+  20207e00    20207e00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000c0     
+                  00000000    000000c0     startup_mspm0g3507_ticlang.o (.intvecs)
+
+.text      0    000000c0    00001370     
+                  000000c0    00000192     libclang_rt.builtins.a : adddf3.S.obj (.text.adddf3_subdf3)
+                  00000252    00000002                            : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  00000254    00000168     clock.o (.text.clock_init_40mhz)
+                  000003bc    00000128     lab11p1_main.o (.text.run_lab11_part1)
+                  000004e4    0000010c     LaunchPad.o (.text.seg7_init)
+                  000005f0    000000fc     lab11p1_main.o (.text.get_SPI_data)
+                  000006ec    000000d4     uart.o (.text.UART_init)
+                  000007c0    000000d0     LaunchPad.o (.text.leds_off)
+                  00000890    000000d0     spi.o (.text.spi1_init)
+                  00000960    000000c4     lcd1602.o (.text.lcd1602_init)
+                  00000a24    000000c0     lcd1602.o (.text.lcd1602_write)
+                  00000ae4    000000bc     LaunchPad.o (.text.I2C_init)
+                  00000ba0    000000ac     LaunchPad.o (.text.led_init)
+                  00000c4c    00000094     LaunchPad.o (.text.I2C_send1)
+                  00000ce0    0000007c     lcd1602.o (.text.byte_to_ascii)
+                  00000d5c    00000078     libc.a : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  00000dd4    00000074     LaunchPad.o (.text.seg7_off)
+                  00000e48    00000070     libclang_rt.builtins.a : comparedf2.c.obj (.text.__gedf2)
+                  00000eb8    0000006c                            : comparedf2.c.obj (.text.__ledf2)
+                  00000f24    00000062                            : aeabi_dcmp.S.obj (.text.__aeabi_dcmp)
+                  00000f86    00000002     --HOLE-- [fill = 0]
+                  00000f88    0000005c     LaunchPad.o (.text.I2C_fill_tx_fifo)
+                  00000fe4    0000005c     lab11p1_main.o (.text.main)
+                  00001040    00000042     libclang_rt.builtins.a : fixunsdfsi.S.obj (.text.__fixunsdfsi)
+                  00001082    00000002     --HOLE-- [fill = 0]
+                  00001084    00000040                            : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
+                  000010c4    00000040     lab11p1_main.o (.text.display_menu)
+                  00001104    0000003c     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  00001140    00000038     LaunchPad.o (.text.launchpad_gpio_init)
+                  00001178    00000038     lab11p1_main.o (.text.string_to_uint16)
+                  000011b0    00000034     clock.o (.text.msec_delay)
+                  000011e4    00000034     lab11p1_main.o (.text.update_led)
+                  00001218    0000002c     uart.o (.text.UART_out_char)
+                  00001244    0000002c     spi.o (.text.spi1_write_data)
+                  00001270    00000028     lcd1602.o (.text.lcd_write_byte)
+                  00001298    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
+                  000012c0    00000024     libclang_rt.builtins.a : floatunsidf.S.obj (.text.__floatunsidf)
+                  000012e4    00000024     lcd1602.o (.text.lcd_write_string)
+                  00001308    00000024     lab11p1_main.o (.text.uart_string_printf)
+                  0000132c    00000020     uart.o (.text.UART_in_char)
+                  0000134c    00000020     lcd1602.o (.text.lcd_set_ddram_addr)
+                  0000136c    00000020     lcd1602.o (.text.lcd_set_display_on)
+                  0000138c    00000020     spi.o (.text.spi1_read_data)
+                  000013ac    00000018     lcd1602.o (.text.lcd_write_char)
+                  000013c4    00000012     libc.a : memcpy16.S.obj (.text:TI_memcpy_small)
+                  000013d6    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
+                  000013e8    00000010     clock.o (.text.clock_delay)
+                  000013f8    0000000e     lcd1602.o (.text.lcd_clear)
+                  00001406    00000002     --HOLE-- [fill = 0]
+                  00001408    0000000c     clock.o (.text.get_bus_clock_freq)
+                  00001414    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  0000141c    00000004     startup_mspm0g3507_ticlang.o (.text.Default_Handler)
+                  00001420    00000004     startup_mspm0g3507_ticlang.o (.text.HardFault_Handler)
+                  00001424    00000004     startup_mspm0g3507_ticlang.o (.text.Reset_Handler)
+                  00001428    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  0000142c    00000004            : exit.c.obj (.text:abort)
+
+.cinit     0    00001680    00000020     
+                  00001680    00000009     (.cinit..data.load) [load image, compression = lzss]
+                  00001689    00000003     --HOLE-- [fill = 0]
+                  0000168c    00000008     (__TI_handler_table)
+                  00001694    00000008     (__TI_cinit_table)
+                  0000169c    00000004     --HOLE-- [fill = 0]
+
+.rodata    0    00001430    00000250     
+                  00001430    00000060     LaunchPad.o (.rodata.led_config_data)
+                  00001490    0000003c     LaunchPad.o (.rodata.enable_controls)
+                  000014cc    0000002a     lab11p1_main.o (.rodata.str1.78820894431598057641)
+                  000014f6    00000024     lab11p1_main.o (.rodata.str1.63794271237757387991)
+                  0000151a    0000001f     lab11p1_main.o (.rodata.str1.162696083509288172101)
+                  00001539    0000001c     lab11p1_main.o (.rodata.str1.28829746706988530341)
+                  00001555    0000001a     lab11p1_main.o (.rodata.str1.55605378555909925721)
+                  0000156f    00000019     lab11p1_main.o (.rodata.str1.168871285354159427431)
+                  00001588    00000019     lab11p1_main.o (.rodata.str1.179513945676595111151)
+                  000015a1    00000003     --HOLE-- [fill = 0]
+                  000015a4    00000018     LaunchPad.o (.rodata.iic_config_data)
+                  000015bc    00000017     lab11p1_main.o (.rodata.str1.163833595151034285851)
+                  000015d3    00000015     lab11p1_main.o (.rodata.str1.355664954861771931)
+                  000015e8    00000014     lab11p1_main.o (.rodata.str1.136496409147583754321)
+                  000015fc    00000012     lab11p1_main.o (.rodata.str1.122375284796482539521)
+                  0000160e    00000010     lab11p1_main.o (.rodata.str1.105761394351728757021)
+                  0000161e    00000010     lab11p1_main.o (.rodata.str1.161986564199843276241)
+                  0000162e    00000010     lab11p1_main.o (.rodata.str1.5483700453352076541)
+                  0000163e    00000010     lab11p1_main.o (.rodata.str1.9234490121515819671)
+                  0000164e    00000010     lab11p1_main.o (.rodata.str1.96125414235842139271)
+                  0000165e    0000000e     lab11p1_main.o (.rodata.str1.8349579901575797951)
+                  0000166c    00000007     lab11p1_main.o (.rodata.str1.115361346223853446641)
+                  00001673    00000007     lab11p1_main.o (.rodata.str1.25862384623272891271)
+                  0000167a    00000006     --HOLE-- [fill = 0]
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.binit     0    00000000    00000000     
+
+.data      0    20200800    00000005     UNINITIALIZED
+                  20200800    00000004     clock.o (.data.g_bus_clock_freq)
+                  20200804    00000001     lcd1602.o (.data.g_lcd_backlight_mode)
+
+.sysmem    0    20200000    00000800     UNINITIALIZED
+                  20200000    00000010     libc.a : memory.c.obj (.sysmem)
+                  20200010    000007f0     --HOLE--
+
+.stack     0    20207e00    00000200     UNINITIALIZED
+                  20207e00    00000004     libc.a : boot_cortex_m.c.obj (.stack)
+                  20207e04    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20200000    00000000     UNINITIALIZED
+
+__llvm_prf_bits 
+*          0    20200000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    ./
+       LaunchPad.o                    1248   180       0      
+       lab11p1_main.o                 848    403       0      
+       lcd1602.o                      690    0         1      
+       clock.o                        440    0         4      
+       uart.o                         288    0         0      
+       spi.o                          284    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         3798   583       5      
+                                                              
+    ./ticlang/
+       startup_mspm0g3507_ticlang.o   12     192       0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         12     192       0      
+                                                              
+    /Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/armv6m-ti-none-eabi/c/libc.a
+       copy_decompress_lzss.c.obj     120    0         0      
+       autoinit.c.obj                 60     0         0      
+       boot_cortex_m.c.obj            40     0         0      
+       copy_decompress_none.c.obj     18     0         0      
+       memcpy16.S.obj                 18     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         264    0         0      
+                                                              
+    /Applications/ti/ccstheia141/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib/clang/15.0.7/lib/armv6m-ti-none-eabi/libclang_rt.builtins.a
+       adddf3.S.obj                   402    0         0      
+       comparedf2.c.obj               220    0         0      
+       aeabi_dcmp.S.obj               98     0         0      
+       fixunsdfsi.S.obj               66     0         0      
+       aeabi_uidivmod.S.obj           64     0         0      
+       floatunsidf.S.obj              36     0         0      
+       aeabi_memcpy.S.obj             8      0         0      
+       aeabi_div0.c.obj               2      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         896    0         0      
+                                                              
+       Heap:                          0      0         2048   
+       Stack:                         0      0         512    
+       Linker Generated:              0      25        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   4970   800       2565   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00001694 records: 1, size/record: 8, table size: 8
+	.data: load addr=00001680, load size=00000009 bytes, run addr=20200800, run size=00000005 bytes, compression=lzss
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 0000168c records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+0000141d  ADC0_IRQHandler               
+0000141d  ADC1_IRQHandler               
+0000141d  AES_IRQHandler                
+0000142c  C$$EXIT                       
+0000141d  CANFD0_IRQHandler             
+0000141d  DAC0_IRQHandler               
+0000141d  DMA_IRQHandler                
+0000141d  Default_Handler               
+0000141d  GROUP0_IRQHandler             
+0000141d  GROUP1_IRQHandler             
+00001421  HardFault_Handler             
+0000141d  I2C0_IRQHandler               
+0000141d  I2C1_IRQHandler               
+00000ae5  I2C_init                      
+00000c4d  I2C_send1                     
+0000141d  NMI_Handler                   
+0000141d  PendSV_Handler                
+0000141d  RTC_IRQHandler                
+00001425  Reset_Handler                 
+0000141d  SPI0_IRQHandler               
+0000141d  SPI1_IRQHandler               
+0000141d  SVC_Handler                   
+0000141d  SysTick_Handler               
+0000141d  TIMA0_IRQHandler              
+0000141d  TIMA1_IRQHandler              
+0000141d  TIMG0_IRQHandler              
+0000141d  TIMG12_IRQHandler             
+0000141d  TIMG6_IRQHandler              
+0000141d  TIMG7_IRQHandler              
+0000141d  TIMG8_IRQHandler              
+000013c5  TI_memcpy_small               
+0000141d  UART0_IRQHandler              
+0000141d  UART1_IRQHandler              
+0000141d  UART2_IRQHandler              
+0000141d  UART3_IRQHandler              
+0000132d  UART_in_char                  
+000006ed  UART_init                     
+00001219  UART_out_char                 
+20208000  __STACK_END                   
+00000200  __STACK_SIZE                  
+00000800  __SYSMEM_SIZE                 
+00000000  __TI_ATRegion0_region_sz      
+00000000  __TI_ATRegion0_src_addr       
+00000000  __TI_ATRegion0_trg_addr       
+00000000  __TI_ATRegion1_region_sz      
+00000000  __TI_ATRegion1_src_addr       
+00000000  __TI_ATRegion1_trg_addr       
+00000000  __TI_ATRegion2_region_sz      
+00000000  __TI_ATRegion2_src_addr       
+00000000  __TI_ATRegion2_trg_addr       
+00001694  __TI_CINIT_Base               
+0000169c  __TI_CINIT_Limit              
+0000169c  __TI_CINIT_Warm               
+0000168c  __TI_Handler_Table_Base       
+00001694  __TI_Handler_Table_Limit      
+00001105  __TI_auto_init_nobinit_nopinit
+00000d5d  __TI_decompress_lzss          
+000013d7  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+000000cb  __adddf3                      
+00001041  __aeabi_d2uiz                 
+000000cb  __aeabi_dadd                  
+00000f25  __aeabi_dcmpeq                
+00000f61  __aeabi_dcmpge                
+00000f75  __aeabi_dcmpgt                
+00000f4d  __aeabi_dcmple                
+00000f39  __aeabi_dcmplt                
+000000c1  __aeabi_dsub                  
+00000253  __aeabi_idiv0                 
+00001415  __aeabi_memcpy                
+00001415  __aeabi_memcpy4               
+00001415  __aeabi_memcpy8               
+000012c1  __aeabi_ui2d                  
+00001085  __aeabi_uidiv                 
+00001085  __aeabi_uidivmod              
+ffffffff  __binit__                     
+00000eb9  __cmpdf2                      
+00000eb9  __eqdf2                       
+00001041  __fixunsdfsi                  
+000012c1  __floatunsidf                 
+00000e49  __gedf2                       
+00000e49  __gtdf2                       
+00000eb9  __ledf2                       
+00000eb9  __ltdf2                       
+UNDEFED   __mpu_init                    
+00000eb9  __nedf2                       
+20207e00  __stack                       
+20200000  __start___llvm_prf_bits       
+20200000  __start___llvm_prf_cnts       
+20200000  __stop___llvm_prf_bits        
+20200000  __stop___llvm_prf_cnts        
+000000c1  __subdf3                      
+00001299  _c_int00_noargs               
+20200000  _sys_memory                   
+UNDEFED   _system_post_cinit            
+00001429  _system_pre_init              
+0000142d  abort                         
+ffffffff  binit                         
+00000ce1  byte_to_ascii                 
+000013e9  clock_delay                   
+00000255  clock_init_40mhz              
+000010c5  display_menu                  
+00001490  enable_controls               
+20200800  g_bus_clock_freq              
+000005f1  get_SPI_data                  
+00001409  get_bus_clock_freq            
+000015a4  iic_config_data               
+00000000  interruptVectors              
+00001141  launchpad_gpio_init           
+00000961  lcd1602_init                  
+00000a25  lcd1602_write                 
+000013f9  lcd_clear                     
+0000134d  lcd_set_ddram_addr            
+0000136d  lcd_set_display_on            
+00001271  lcd_write_byte                
+000013ad  lcd_write_char                
+000012e5  lcd_write_string              
+00001430  led_config_data               
+00000ba1  led_init                      
+000007c1  leds_off                      
+00000fe5  main                          
+000011b1  msec_delay                    
+000003bd  run_lab11_part1               
+000004e5  seg7_init                     
+00000dd5  seg7_off                      
+00000891  spi1_init                     
+0000138d  spi1_read_data                
+00001245  spi1_write_data               
+00001179  string_to_uint16              
+00001309  uart_string_printf            
+000011e5  update_led                    
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_ATRegion0_region_sz      
+00000000  __TI_ATRegion0_src_addr       
+00000000  __TI_ATRegion0_trg_addr       
+00000000  __TI_ATRegion1_region_sz      
+00000000  __TI_ATRegion1_src_addr       
+00000000  __TI_ATRegion1_trg_addr       
+00000000  __TI_ATRegion2_region_sz      
+00000000  __TI_ATRegion2_src_addr       
+00000000  __TI_ATRegion2_trg_addr       
+00000000  __TI_static_base__            
+00000000  interruptVectors              
+000000c1  __aeabi_dsub                  
+000000c1  __subdf3                      
+000000cb  __adddf3                      
+000000cb  __aeabi_dadd                  
+00000200  __STACK_SIZE                  
+00000253  __aeabi_idiv0                 
+00000255  clock_init_40mhz              
+000003bd  run_lab11_part1               
+000004e5  seg7_init                     
+000005f1  get_SPI_data                  
+000006ed  UART_init                     
+000007c1  leds_off                      
+00000800  __SYSMEM_SIZE                 
+00000891  spi1_init                     
+00000961  lcd1602_init                  
+00000a25  lcd1602_write                 
+00000ae5  I2C_init                      
+00000ba1  led_init                      
+00000c4d  I2C_send1                     
+00000ce1  byte_to_ascii                 
+00000d5d  __TI_decompress_lzss          
+00000dd5  seg7_off                      
+00000e49  __gedf2                       
+00000e49  __gtdf2                       
+00000eb9  __cmpdf2                      
+00000eb9  __eqdf2                       
+00000eb9  __ledf2                       
+00000eb9  __ltdf2                       
+00000eb9  __nedf2                       
+00000f25  __aeabi_dcmpeq                
+00000f39  __aeabi_dcmplt                
+00000f4d  __aeabi_dcmple                
+00000f61  __aeabi_dcmpge                
+00000f75  __aeabi_dcmpgt                
+00000fe5  main                          
+00001041  __aeabi_d2uiz                 
+00001041  __fixunsdfsi                  
+00001085  __aeabi_uidiv                 
+00001085  __aeabi_uidivmod              
+000010c5  display_menu                  
+00001105  __TI_auto_init_nobinit_nopinit
+00001141  launchpad_gpio_init           
+00001179  string_to_uint16              
+000011b1  msec_delay                    
+000011e5  update_led                    
+00001219  UART_out_char                 
+00001245  spi1_write_data               
+00001271  lcd_write_byte                
+00001299  _c_int00_noargs               
+000012c1  __aeabi_ui2d                  
+000012c1  __floatunsidf                 
+000012e5  lcd_write_string              
+00001309  uart_string_printf            
+0000132d  UART_in_char                  
+0000134d  lcd_set_ddram_addr            
+0000136d  lcd_set_display_on            
+0000138d  spi1_read_data                
+000013ad  lcd_write_char                
+000013c5  TI_memcpy_small               
+000013d7  __TI_decompress_none          
+000013e9  clock_delay                   
+000013f9  lcd_clear                     
+00001409  get_bus_clock_freq            
+00001415  __aeabi_memcpy                
+00001415  __aeabi_memcpy4               
+00001415  __aeabi_memcpy8               
+0000141d  ADC0_IRQHandler               
+0000141d  ADC1_IRQHandler               
+0000141d  AES_IRQHandler                
+0000141d  CANFD0_IRQHandler             
+0000141d  DAC0_IRQHandler               
+0000141d  DMA_IRQHandler                
+0000141d  Default_Handler               
+0000141d  GROUP0_IRQHandler             
+0000141d  GROUP1_IRQHandler             
+0000141d  I2C0_IRQHandler               
+0000141d  I2C1_IRQHandler               
+0000141d  NMI_Handler                   
+0000141d  PendSV_Handler                
+0000141d  RTC_IRQHandler                
+0000141d  SPI0_IRQHandler               
+0000141d  SPI1_IRQHandler               
+0000141d  SVC_Handler                   
+0000141d  SysTick_Handler               
+0000141d  TIMA0_IRQHandler              
+0000141d  TIMA1_IRQHandler              
+0000141d  TIMG0_IRQHandler              
+0000141d  TIMG12_IRQHandler             
+0000141d  TIMG6_IRQHandler              
+0000141d  TIMG7_IRQHandler              
+0000141d  TIMG8_IRQHandler              
+0000141d  UART0_IRQHandler              
+0000141d  UART1_IRQHandler              
+0000141d  UART2_IRQHandler              
+0000141d  UART3_IRQHandler              
+00001421  HardFault_Handler             
+00001425  Reset_Handler                 
+00001429  _system_pre_init              
+0000142c  C$$EXIT                       
+0000142d  abort                         
+00001430  led_config_data               
+00001490  enable_controls               
+000015a4  iic_config_data               
+0000168c  __TI_Handler_Table_Base       
+00001694  __TI_CINIT_Base               
+00001694  __TI_Handler_Table_Limit      
+0000169c  __TI_CINIT_Limit              
+0000169c  __TI_CINIT_Warm               
+20200000  __start___llvm_prf_bits       
+20200000  __start___llvm_prf_cnts       
+20200000  __stop___llvm_prf_bits        
+20200000  __stop___llvm_prf_cnts        
+20200000  _sys_memory                   
+20200800  g_bus_clock_freq              
+20207e00  __stack                       
+20208000  __STACK_END                   
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[134 symbols]
